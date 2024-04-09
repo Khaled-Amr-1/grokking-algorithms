@@ -1,23 +1,24 @@
 def main():
-    item = input("Enter the item : ")
-    data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    print(binary_search(data, int(item)))
+    arr1 = [0, 6, -2, 5]
+    print(selection_sort(arr1))
 
 
-def binary_search(data, item):
-    low = 0
-    high = len(data) - 1
+def find_smallest(arr):
+    smallest = arr[0]
+    smallest_index = 0
+    for i in range(1, len(arr)):
+        if arr[i] < smallest:
+            smallest = arr[i]
+            smallest_index = i
+    return smallest_index
 
-    while low <= high:
-        mid = (low + high) // 2
-        if item == mid:
-            return mid
-        elif item > mid:
-            low = mid + 1
-        elif item < mid:
-            high = mid - 1
-        else:
-            return None
+
+def selection_sort(arr):
+    new_arr = []
+    for i in range(len(arr)):
+        smallest = find_smallest(arr)
+        new_arr.append(arr.pop(smallest))
+    return new_arr
 
 
 main()
