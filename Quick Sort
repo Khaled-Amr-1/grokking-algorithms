@@ -1,1 +1,15 @@
+def main():
+    print(quick_sort([5, 6, 8, 1, 9, 3, 0, -5]))
 
+
+def quick_sort(array):
+    if len(array) < 2:
+        return array
+    else:
+        pivot = array[0]
+        higher = [i for i in array[1:] if i > pivot]
+        lower = [i for i in array[1:] if i < pivot]
+        return quick_sort(lower) + [pivot] + quick_sort(higher)
+
+
+main()
